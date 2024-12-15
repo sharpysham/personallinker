@@ -102,7 +102,7 @@
 
         async function fetchLinks() {
             try {
-                const response = await fetch('/api/links');
+                const response = await fetch('http://localhost:3000/api/links');
                 const links = await response.json();
                 links.forEach((link, index) => addLinkToTable(link, index + 1));
             } catch (error) {
@@ -115,7 +115,7 @@
             const link = linkInput.value.trim();
             if (link) {
                 try {
-                    const response = await fetch('/api/links', {
+                    const response = await fetch('http://localhost:3000/api/links', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -155,7 +155,7 @@
             deleteButton.className = 'delete';
             deleteButton.onclick = async () => {
                 try {
-                    const response = await fetch(`/api/links/${link.id}`, { method: 'DELETE' });
+                    const response = await fetch(`http://localhost:3000/api/links/${link.id}`, { method: 'DELETE' });
                     if (response.ok) row.remove();
                     else console.error('Failed to delete link:', await response.text());
                 } catch (error) {
